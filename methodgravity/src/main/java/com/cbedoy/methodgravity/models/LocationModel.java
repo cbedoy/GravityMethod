@@ -9,7 +9,7 @@ public class LocationModel implements IModel {
     private String nombre;
     private float longitud;
     private float latitud;
-    private String descripcion;
+    private float costo;
     private String escudo;
 
     public void setLongitud(float longitud) {
@@ -18,10 +18,6 @@ public class LocationModel implements IModel {
 
     public float getLongitud() {
         return longitud;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public void setEscudo(String escudo) {
@@ -40,15 +36,19 @@ public class LocationModel implements IModel {
         return latitud;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
     public String getEscudo() {
         return escudo;
     }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public float getCosto() {
+        return costo;
+    }
+
+    public void setCosto(float costo) {
+        this.costo = costo;
     }
 }
