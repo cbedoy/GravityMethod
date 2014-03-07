@@ -1,5 +1,7 @@
 package com.cbedoy.methodgravity.parsers;
 
+import android.util.Log;
+
 import com.cbedoy.methodgravity.interfaces.IModel;
 import com.cbedoy.methodgravity.interfaces.IParser;
 import com.cbedoy.methodgravity.models.ResponseModel;
@@ -24,7 +26,8 @@ public class ItemLocationParser implements IParser {
             model.setLatitud((float)coord.getDouble("lat"));
             model.setLongitud((float)coord.getDouble("lon"));
 
-
+            Log.i("Fix", "Latitud: "+model.getLatitud()+"");
+            Log.i("Fix", "Longitud: "+model.getLatitud()+"");
         }catch (Exception e){
             e.printStackTrace();
         }
