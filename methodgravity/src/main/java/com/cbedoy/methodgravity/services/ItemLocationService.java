@@ -22,11 +22,11 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
 
     private ProgressDialog progressDialog;
     private Context context;
-    private String model;
+    private String param;
     private  CBRESTClient rest;
-    public ItemLocationService(Context context, String data){
+    public ItemLocationService(Context context, String param){
         this.context = context;
-        this.model = data;
+        this.param = param;
         Log.i("Fix", "Create");
     }
 
@@ -39,9 +39,9 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
     @Override
     protected String doInBackground(String... strings) {
 
-        CBRESTClient rest = new CBRESTClient("http://api.openweathermap.org/data/2.5/weather");
+        CBRESTClient rest = new CBRESTClient("http://api.openweathermap.org/data/2.5/weather?");
 
-        rest.AddParam("q", model);
+        rest.AddParam("q", param);
         Log.i("Fix", "Do");
         return runSerive(rest);
     }
@@ -53,12 +53,13 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
         try {
             request.Execute(CBRESTClient.RequestMethod.GET);
             Log.i("Fix", "Run");
-            Log.i("Fix", rest.getResponse());
         } catch (Exception e) {
             e.printStackTrace();
+            Log.i("Fix", "Valio pito");
+
         }
 
-        return (request.getResponse() != null)?request.getResponse():"";
+        return request.getResponse();
 
     }
 
@@ -68,6 +69,7 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
     protected void onPostExecute(String result){
         this.progressDialog.dismiss();
         Log.i("Fix", "Post");
+        Log.i("Fix", result);
         try{
             JSONArray jsonArray = new JSONArray(result);
 

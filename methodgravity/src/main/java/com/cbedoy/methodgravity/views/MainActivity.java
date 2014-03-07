@@ -145,6 +145,7 @@ public class MainActivity extends Activity
                 @Override
                 public void onClick(View view) {
                     ItemLocationService service = new ItemLocationService(getActivity(), "Aguascalientes");
+                    service.execute();
                 }
             });
             return rootView;
