@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.cbedoy.methodgravity.R;
@@ -129,8 +130,9 @@ public class MainActivity extends Activity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+            WebView webView = (WebView)rootView.findViewById(R.id.webView);
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.loadUrl("http://cbedoy.site44.com/registro.html");
             return rootView;
         }
 

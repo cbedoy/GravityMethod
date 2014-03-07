@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.cbedoy.methodgravity.interfaces.IModel;
 import com.cbedoy.methodgravity.R;
-import com.cbedoy.methodgravity.models.FieldElement;
+import com.cbedoy.methodgravity.models.LabelFieldModel;
 
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class ItemFieldElement extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return i;
+        return dataSource.get(i);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class ItemFieldElement extends BaseAdapter {
             LinearLayout linearLayout = (LinearLayout)view;
             TextView textView = (TextView)linearLayout.findViewById(R.id.label);
             EditText editText = (EditText)linearLayout.findViewById(R.id.field);
-            FieldElement fieldElement = (FieldElement) dataSource.get(i);
+            LabelFieldModel fieldElement = (LabelFieldModel) dataSource.get(i);
 
             textView.setText(fieldElement.getLabel());
             editText.setText(fieldElement.getValue());
