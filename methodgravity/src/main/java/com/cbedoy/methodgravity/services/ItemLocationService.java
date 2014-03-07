@@ -9,11 +9,15 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.cbedoy.methodgravity.interfaces.IModel;
+import com.cbedoy.methodgravity.interfaces.IParser;
 import com.cbedoy.methodgravity.interfaces.IService;
 import com.cbedoy.methodgravity.libs.CBRESTClient;
 import com.cbedoy.methodgravity.models.LocationModel;
+import com.cbedoy.methodgravity.parsers.ItemLocationParser;
 
 import org.json.JSONArray;
+
+import java.util.ArrayList;
 
 /**
  * Created by Carlos on 5/03/14.
@@ -69,12 +73,16 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
     protected void onPostExecute(String result){
         this.progressDialog.dismiss();
         Log.i("Fix", "Post");
-        Log.i("Fix", result);
+
         try{
             JSONArray jsonArray = new JSONArray(result);
 
-        }catch (Exception e){
+            ItemLocationParser parser = new ItemLocationParser();
+            ArrayList<IModel> models = parser.getDataParsed(jsonArray);
 
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.i("Fix", e.getMessage());
         }
 
     }

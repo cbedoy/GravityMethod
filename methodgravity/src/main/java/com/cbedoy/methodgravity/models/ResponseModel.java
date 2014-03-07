@@ -5,6 +5,7 @@ package com.cbedoy.methodgravity.models;
  */
 public class ResponseModel extends LocationModel {
 
+
     private String messsage;
     private String country;
     private long sunrise;
