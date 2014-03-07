@@ -39,7 +39,7 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
     @Override
     protected String doInBackground(String... strings) {
 
-        CBRESTClient rest = new CBRESTClient("http://api.openweathermap.org/data/2.5/weather?");
+        CBRESTClient rest = new CBRESTClient("http://api.openweathermap.org/data/2.5/weather");
 
         rest.AddParam("q", param);
         Log.i("Fix", "Do");
