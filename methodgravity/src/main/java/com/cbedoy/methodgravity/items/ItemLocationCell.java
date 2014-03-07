@@ -65,7 +65,7 @@ public class ItemLocationCell extends BaseAdapter{
             longitud.setText(locationModel.getLongitud()+"");
             costo.setText(locationModel.getCosto()+"");
             nombre.setText(locationModel.getNombre());
-            
+
 
             linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
