@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.cbedoy.methodgravity.R;
+import com.cbedoy.methodgravity.services.ItemLocationService;
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -133,6 +136,17 @@ public class MainActivity extends Activity
             WebView webView = (WebView)rootView.findViewById(R.id.webView);
             webView.getSettings().setJavaScriptEnabled(true);
             webView.loadUrl("http://cbedoy.site44.com/registro.html");
+
+            Button b = (Button)rootView.findViewById(R.id.search);
+            EditText e = (EditText)rootView.findViewById(R.id.input);
+
+
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ItemLocationService service = new ItemLocationService(getActivity(), "Aguascalientes");
+                }
+            });
             return rootView;
         }
 

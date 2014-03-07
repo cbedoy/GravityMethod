@@ -26,9 +26,9 @@ public class ItemLocationParser implements IParser {
 
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
-
+        data.add(model);
         return data;
     }
 }

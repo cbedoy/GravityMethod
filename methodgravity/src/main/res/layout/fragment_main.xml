@@ -27,11 +27,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:id="@+id/input"
             android:hint="ingresa localizacion"/>
         <Button
             android:layout_width="wrap_content"
             android:text="Buscar"
             android:layout_weight="1"
+            android:id="@+id/search"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
