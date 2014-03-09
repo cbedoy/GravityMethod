@@ -1,11 +1,13 @@
-Gravity Method
-=============
+[![logo](http://www.monografias.com/trabajos35/hidrostatica-hidrodinamica/Image2623.jpg )](https://www.facebook.com/carlos.bedoy)
 
 
-Android project develop by Carlos Bedoy
+# Metodo de gravedad
 
-:D
+Proyecto desarrollado por Carlos Bedoy, estudiante de la UAA y desarrollador de Pademobile, dicho proyecto va dirigido a resolver problemas de investigacion de operaciones para buscar el mejor sitio de acuerdo a sus cordenadas geograficas, dicha aplicacion es open source y puede expandirse en mas mududlos.
 
-Aguascalientes, Mexico 201
+El codigo actual es Java orientado a Android, el proyecto es muy sencillo pero cuenta con una arquitectura de desarrollo profesional.
 
-Add more change on develop4
+
+# Aguascalientes, Mexico 201
+
+## Add more change on develop4
