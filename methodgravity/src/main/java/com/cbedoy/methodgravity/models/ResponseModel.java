@@ -30,23 +30,23 @@ public class ResponseModel extends LocationModel {
     private int error;
 
     public String getTempMaxString() {
-        return (getMaxTemp()-32/1.8)+"";
+        return (getMaxTemp()-32/1.8)+" ºC";
     }
 
     public String getTempMinString() {
-        return (getMinTemp()-32/1.8)+"";
+        return (getMinTemp()-32/1.8)+" ºC";
     }
 
     public String getTempString() {
-        return (getTemp()-32/1.8)+"";
+        return (getTemp()-32/1.8)+" ºC";
     }
 
     public String getSunriseString() {
-        return DateFormat.format("hh:mm:ss", new Date(getSunrise())).toString();
+        return DateFormat.format("hh:mm:ss aa", new Date(getSunrise())).toString();
     }
 
     public String getSunsetString(){
-        return DateFormat.format("hh:mm:ss", new Date(getSunset())).toString();
+        return DateFormat.format("hh:mm:ss aa", new Date(getSunset())).toString();
     }
 
     @Override
