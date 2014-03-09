@@ -52,12 +52,10 @@ public class ItemFieldElement extends BaseAdapter {
             LayoutInflater inflate = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View vistaView  = inflate.inflate(R.layout.inflate_label_field, null);
             view = vistaView;
-        }else{
+        }else if(view!=null){
             LinearLayout linearLayout = (LinearLayout)view;
             TextView textView = (TextView)linearLayout.findViewById(R.id.label);
-            textView.setText(null);
             EditText editText = (EditText)linearLayout.findViewById(R.id.field);
-            editText.setText(null);
             LabelFieldModel fieldElement = (LabelFieldModel) dataSource.get(i);
 
             textView.setText(fieldElement.getLabel());
