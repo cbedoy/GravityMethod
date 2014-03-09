@@ -55,7 +55,9 @@ public class ItemFieldElement extends BaseAdapter {
         }else{
             LinearLayout linearLayout = (LinearLayout)view;
             TextView textView = (TextView)linearLayout.findViewById(R.id.label);
+            textView.setText(null);
             EditText editText = (EditText)linearLayout.findViewById(R.id.field);
+            editText.setText(null);
             LabelFieldModel fieldElement = (LabelFieldModel) dataSource.get(i);
 
             textView.setText(fieldElement.getLabel());
