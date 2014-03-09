@@ -1,5 +1,9 @@
 package com.cbedoy.methodgravity.models;
 
+import android.text.format.DateFormat;
+
+import java.util.Date;
+
 /**
  * Created by Carlos on 6/03/14.
  */
@@ -10,16 +14,40 @@ public class ResponseModel extends LocationModel {
     private String country;
     private long sunrise;
     private long sunset;
+    private String sunsetString;
+    private String sunriseString;
     private int id;
     private String main;
     private String description;
     private float temp;
     private float maxTemp;
     private float minTemp;
+    private String tempString;
+    private String tempMaxString;
+    private String tempMinString;
     private float pressure;
     private float humidity;
     private int error;
 
+    public String getTempMaxString() {
+        return (getMaxTemp()-32/1.8)+" ºC";
+    }
+
+    public String getTempMinString() {
+        return (getMinTemp()-32/1.8)+" ºC";
+    }
+
+    public String getTempString() {
+        return (getTemp()-32/1.8)+" ºC";
+    }
+
+    public String getSunriseString() {
+        return DateFormat.format("hh:mm:ss aa", new Date(getSunrise())).toString();
+    }
+
+    public String getSunsetString(){
+        return DateFormat.format("hh:mm:ss aa", new Date(getSunset())).toString();
+    }
 
     @Override
     public void setCosto(float costo) {
