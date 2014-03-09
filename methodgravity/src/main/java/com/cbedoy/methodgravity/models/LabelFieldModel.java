@@ -14,6 +14,12 @@ public class LabelFieldModel implements IModel {
 
     }
 
+    public LabelFieldModel(String label, String field, String value){
+        this.label = label;
+        this.field = field;
+        this.value = value;
+    }
+
     public String getField() {
         return field;
     }

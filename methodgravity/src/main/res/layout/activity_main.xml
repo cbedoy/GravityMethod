@@ -22,9 +22,10 @@
     <!-- The drawer is given a fixed width in dp and extends the full height of
          the container. -->
     <fragment android:id="@+id/navigation_drawer"
-        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:name="com.cbedoy.methodgravity.views.NavigationDrawerFragment" />
+        android:name="com.cbedoy.methodgravity.views.NavigationDrawerFragment"
+        tools:layout="@layout/fragment_navigation_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

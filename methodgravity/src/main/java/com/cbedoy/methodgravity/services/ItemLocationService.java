@@ -14,8 +14,10 @@ import com.cbedoy.methodgravity.interfaces.IService;
 import com.cbedoy.methodgravity.libs.CBRESTClient;
 import com.cbedoy.methodgravity.models.LocationModel;
 import com.cbedoy.methodgravity.parsers.ItemLocationParser;
+import com.cbedoy.methodgravity.views.ReportActivity;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -75,11 +77,11 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
         Log.i("Fix", "Post");
 
         try{
-            JSONArray jsonArray = new JSONArray(result);
+            JSONObject jsonObject = new JSONObject(result);
 
             ItemLocationParser parser = new ItemLocationParser();
-            ArrayList<IModel> models = parser.getDataParsed(jsonArray);
-
+            ArrayList<IModel> models = parser.getDataParsed(jsonObject);
+            ReportActivity.mthis.reportFragment.reloadData(models);
         }catch (Exception e){
             e.printStackTrace();
             Log.i("Fix", e.getMessage());

@@ -1,5 +1,6 @@
 package com.cbedoy.methodgravity.items;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -22,9 +23,9 @@ import java.util.ArrayList;
 public class ItemFieldElement extends BaseAdapter {
 
     private ArrayList<IModel> dataSource;
-    private Application context;
+    private Activity context;
 
-    public ItemFieldElement(Application context, ArrayList<IModel> dataSource){
+    public ItemFieldElement(Activity context, ArrayList<IModel> dataSource){
         this.context =      context;
         this.dataSource =   dataSource;
     }
