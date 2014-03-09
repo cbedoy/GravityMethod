@@ -12,25 +12,35 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.ListView;
 
+import com.cbedoy.methodgravity.Fragments.ReportFragment;
 import com.cbedoy.methodgravity.R;
 import com.cbedoy.methodgravity.interfaces.IModel;
+import com.cbedoy.methodgravity.interfaces.IRefresh;
 import com.cbedoy.methodgravity.items.ItemFieldElement;
+import com.cbedoy.methodgravity.items.ItemLocationCell;
 import com.cbedoy.methodgravity.models.LabelFieldModel;
+import com.cbedoy.methodgravity.services.ItemLocationService;
 
 import java.util.ArrayList;
 
 public class ReportActivity extends Activity {
 
+    public static ReportActivity mthis;
+    public ReportFragment reportFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
+        reportFragment = new ReportFragment();
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, reportFragment)
                     .commit();
         }
+        mthis = this;
+        ItemLocationService service = new ItemLocationService(this, "Aguascalientes");
+        service.execute();
     }
 
 
@@ -54,75 +64,7 @@ public class ReportActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
 
-        public PlaceholderFragment() {
-        }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_report, container, false);
-            assert rootView != null;
-            ListView listView = (ListView)rootView.findViewById(R.id.listFields);
-            ArrayList<IModel> arrayList = new ArrayList<IModel>();
-
-            LabelFieldModel model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Latitud");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Longitud");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Temperatura");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Temp max.");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Temp min.");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Clima");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Humedad");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Presion");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Amanecer");
-            arrayList.add(model);
-
-            model = new LabelFieldModel();
-            model.setField("");
-            model.setLabel("Anochecer");
-            arrayList.add(model);
-            listView.setAdapter(new ItemFieldElement(getActivity(), arrayList));
-            listView.notif
-            return rootView;
-        }
-    }
 
 }

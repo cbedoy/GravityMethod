@@ -17,23 +17,38 @@ import java.util.ArrayList;
 public class ItemLocationParser implements IParser {
 
     @Override
-    public ArrayList<IModel> getDataParsed(JSONArray array) {
+    public ArrayList<IModel> getDataParsed(JSONObject jsonObject) {
         ArrayList<IModel> data = new ArrayList<IModel>();
         Log.i("fix", "start parse");
         ResponseModel model = new ResponseModel();
         try{
 
 
-            JSONObject json = array.getJSONObject(1);
-            model.setLatitud((float)json.getDouble("lat"));
-            model.setLongitud((float)json.getDouble("lon"));
-            JSONArray jsonA = array.getJSONArray(2);
-            model.setCountry(json.getString("country"));
-            model.setSunrise(json.getLong("sunrise"));
-            model.setSunset(json.getLong("sunset"));
-            json = array.getJSONObject(3);
+            JSONObject coord = jsonObject.getJSONObject("coord");
+            model.setLatitud((float)coord.getDouble("lat"));
+            model.setLongitud((float)coord.getDouble("lon"));
 
-            Log.i("fix", model.getLatitud()+"");
+            JSONObject sys = jsonObject.getJSONObject("sys");
+            model.setMesssage(sys.getString("message"));
+            model.setCountry(sys.getString("country"));
+            model.setSunrise(Integer.parseInt(sys.getString("sunrise")));
+            model.setSunset(Integer.parseInt(sys.getString("sunset")));
+
+            JSONObject main = jsonObject.getJSONObject("main");
+            model.setTemp(Float.parseFloat(main.getString("temp")));
+            model.setPressure(Float.parseFloat(main.getString("pressure")));
+            model.setHumidity(Float.parseFloat(main.getString("humidity")));
+            model.setMaxTemp(Float.parseFloat(main.getString("temp_max")));
+            model.setMinTemp(Float.parseFloat(main.getString("temp_min")));
+
+            model.setId(Integer.parseInt(jsonObject.getString("id")));
+            model.setNombre(jsonObject.getString("name"));
+
+
+
+
+
+            Log.i("fix", model.getLatitud() + "");
             Log.i("fix", model.getLongitud()+"");
             Log.i("fix", model.getCountry()+"");
             Log.i("fix", model.getSunrise()+"");
