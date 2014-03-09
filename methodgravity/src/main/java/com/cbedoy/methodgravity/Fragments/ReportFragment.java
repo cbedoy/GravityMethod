@@ -44,18 +44,19 @@ public  class ReportFragment extends Fragment implements IRefresh {
         ArrayList<IModel> labelFieldModelArrayList = new ArrayList<IModel>();
         ResponseModel responseModel = (ResponseModel) models.get(0);
         labelFieldModelArrayList.add(new LabelFieldModel("Nombre", null, responseModel.getNombre()));
-        labelFieldModelArrayList.add(new LabelFieldModel("Descripcion",  null, responseModel.getDescription()));
         labelFieldModelArrayList.add(new LabelFieldModel("Country",  null, responseModel.getCountry()));
-        labelFieldModelArrayList.add(new LabelFieldModel("Main",  null, responseModel.getMain()));
         labelFieldModelArrayList.add(new LabelFieldModel("Humedad",  null, responseModel.getHumidity()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Latitud",  null, responseModel.getLatitud()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Longitud",  null, responseModel.getLongitud()+""));
+        labelFieldModelArrayList.add(new LabelFieldModel("Temp act.",  null, responseModel.getTemp()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Temp Max.",  null, responseModel.getMaxTemp()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Temp Min.",  null, responseModel.getMinTemp()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Presion",  null, responseModel.getPressure()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Sunrise",  null, responseModel.getSunriseString()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Sunset",  null, responseModel.getSunsetString()+""));
 
-        listView.setAdapter(new ItemFieldElement(getActivity(), labelFieldModelArrayList));
+        ItemFieldElement itemFieldElement = new ItemFieldElement(getActivity(), labelFieldModelArrayList);
+        listView.setAdapter(itemFieldElement);
+        itemFieldElement.notifyDataSetChanged();
     }
 }

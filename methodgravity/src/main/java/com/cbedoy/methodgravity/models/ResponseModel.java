@@ -22,9 +22,24 @@ public class ResponseModel extends LocationModel {
     private float temp;
     private float maxTemp;
     private float minTemp;
+    private String tempString;
+    private String tempMaxString;
+    private String tempMinString;
     private float pressure;
     private float humidity;
     private int error;
+
+    public String getTempMaxString() {
+        return (getMaxTemp()-32/1.8)+"";
+    }
+
+    public String getTempMinString() {
+        return (getMinTemp()-32/1.8)+"";
+    }
+
+    public String getTempString() {
+        return (getTemp()-32/1.8)+"";
+    }
 
     public String getSunriseString() {
         return DateFormat.format("hh:mm:ss", new Date(getSunrise())).toString();
