@@ -49,8 +49,8 @@ public  class ReportFragment extends Fragment implements IRefresh {
         labelFieldModelArrayList.add(new LabelFieldModel("Latitud",  null, responseModel.getLatitud()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Longitud",  null, responseModel.getLongitud()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Temp act.",  null, responseModel.getTempString()+""));
-        labelFieldModelArrayList.add(new LabelFieldModel("Temp Max.",  null, responseModel.getMaxTemp()+""));
-        labelFieldModelArrayList.add(new LabelFieldModel("Temp Min.",  null, responseModel.getMinTemp()+""));
+        labelFieldModelArrayList.add(new LabelFieldModel("Temp Max.",  null, responseModel.getTempMaxString()+""));
+        labelFieldModelArrayList.add(new LabelFieldModel("Temp Min.",  null, responseModel.getTempMinString()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Presion",  null, responseModel.getPressure()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Sunrise",  null, responseModel.getSunriseString()+""));
         labelFieldModelArrayList.add(new LabelFieldModel("Sunset",  null, responseModel.getSunsetString()+""));
