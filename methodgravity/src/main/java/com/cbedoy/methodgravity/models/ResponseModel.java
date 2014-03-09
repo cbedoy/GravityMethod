@@ -2,6 +2,7 @@ package com.cbedoy.methodgravity.models;
 
 import android.text.format.DateFormat;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -30,15 +31,15 @@ public class ResponseModel extends LocationModel {
     private int error;
 
     public String getTempMaxString() {
-        return (getMaxTemp()-32/1.8)+" ºC";
+        return new DecimalFormat("#.##").format(getMaxTemp()-32/1.8)+" ºC";
     }
 
     public String getTempMinString() {
-        return (getMinTemp()-32/1.8)+" ºC";
+        return new DecimalFormat("#.##").format(getMinTemp()-32/1.8)+" ºC";
     }
 
     public String getTempString() {
-        return (getTemp()-32/1.8)+" ºC";
+        return new DecimalFormat("#.##").format(getTemp() - 32 / 1.8)+" ºC";
     }
 
     public String getSunriseString() {
