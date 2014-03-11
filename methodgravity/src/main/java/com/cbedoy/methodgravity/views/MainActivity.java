@@ -22,6 +22,9 @@ import android.widget.TextView;
 import com.cbedoy.methodgravity.R;
 import com.cbedoy.methodgravity.interfaces.IModel;
 import com.cbedoy.methodgravity.interfaces.IRefresh;
+import com.cbedoy.methodgravity.items.ItemFieldElement;
+import com.cbedoy.methodgravity.models.LabelFieldModel;
+import com.cbedoy.methodgravity.models.ResponseModel;
 import com.cbedoy.methodgravity.services.ItemLocationService;
 
 import java.util.ArrayList;
@@ -134,6 +137,7 @@ public class MainActivity extends Activity
         }
 
         public PlaceholderFragment() {
+
         }
 
         @Override
@@ -167,8 +171,25 @@ public class MainActivity extends Activity
 
         @Override
         public void reloadData(ArrayList<IModel> models) {
-
             Log.i("Fix", "Reload data in main activity");
+
+            ArrayList<IModel> labelFieldModelArrayList = new ArrayList<IModel>();
+            ResponseModel responseModel = (ResponseModel) models.get(0);
+            labelFieldModelArrayList.add(new LabelFieldModel("Nombre", null, responseModel.getNombre()));
+            labelFieldModelArrayList.add(new LabelFieldModel("Country",  null, responseModel.getCountry()));
+            labelFieldModelArrayList.add(new LabelFieldModel("Humedad",  null, responseModel.getHumidity()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Latitud",  null, responseModel.getLatitud()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Longitud",  null, responseModel.getLongitud()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Temp act.",  null, responseModel.getTempString()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Temp Max.",  null, responseModel.getTempMaxString()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Temp Min.",  null, responseModel.getTempMinString()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Presion",  null, responseModel.getPressure()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Sunrise",  null, responseModel.getSunriseString()+""));
+            labelFieldModelArrayList.add(new LabelFieldModel("Sunset",  null, responseModel.getSunsetString()+""));
+
+            ItemFieldElement itemFieldElement = new ItemFieldElement(getActivity(), labelFieldModelArrayList);
+            listView.setAdapter(itemFieldElement);
+            itemFieldElement.notifyDataSetChanged();
         }
     }
 
