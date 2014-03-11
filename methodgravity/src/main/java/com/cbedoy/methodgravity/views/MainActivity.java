@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,10 +16,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.cbedoy.methodgravity.R;
+import com.cbedoy.methodgravity.interfaces.IModel;
+import com.cbedoy.methodgravity.interfaces.IRefresh;
 import com.cbedoy.methodgravity.services.ItemLocationService;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -107,11 +113,12 @@ public class MainActivity extends Activity
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements IRefresh{
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
+        private ListView listView;
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         /**
@@ -134,15 +141,16 @@ public class MainActivity extends Activity
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+            listView = (ListView)rootView.findViewById(R.id.reportList);
+            Button actionSearch = (Button)rootView.findViewById(R.id.search);
+            final EditText fieldForCountry = (EditText)rootView.findViewById(R.id.input);
 
-            Button b = (Button)rootView.findViewById(R.id.search);
-            EditText e = (EditText)rootView.findViewById(R.id.input);
 
-
-            b.setOnClickListener(new View.OnClickListener() {
+            actionSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ItemLocationService service = new ItemLocationService(getActivity(), "Aguascalientes");
+                    String value = fieldForCountry.getText().toString();
+                    ItemLocationService service = new ItemLocationService(getActivity(), value);
                     service.execute();
                 }
             });
@@ -154,6 +162,13 @@ public class MainActivity extends Activity
             super.onAttach(activity);
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+        }
+
+
+        @Override
+        public void reloadData(ArrayList<IModel> models) {
+
+            Log.i("Fix", "Reload data in main activity");
         }
     }
 
