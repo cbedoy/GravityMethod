@@ -6,14 +6,12 @@
     android:orientation="vertical"
     tools:context="com.cbedoy.methodgravity.views.MainActivity$PlaceholderFragment">
 
-    <WebView
-        android:id="@+id/webView"
+    <ListView
+        android:id="@+id/reportList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="99"/>
-
-
-
+       
     <LinearLayout
         android:layout_width="fill_parent"
         android:orientation="horizontal"

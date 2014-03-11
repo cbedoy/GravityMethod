@@ -133,9 +133,7 @@ public class MainActivity extends Activity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            WebView webView = (WebView)rootView.findViewById(R.id.webView);
-            webView.getSettings().setJavaScriptEnabled(true);
-            webView.loadUrl("http://cbedoy.site44.com/registro.html");
+
 
             Button b = (Button)rootView.findViewById(R.id.search);
             EditText e = (EditText)rootView.findViewById(R.id.input);
