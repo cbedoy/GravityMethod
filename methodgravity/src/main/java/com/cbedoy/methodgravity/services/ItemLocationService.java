@@ -83,7 +83,7 @@ public class ItemLocationService extends AsyncTask<String, Integer,String> imple
             ItemLocationParser parser = new ItemLocationParser();
             ArrayList<IModel> models = parser.getDataParsed(jsonObject);
             MainActivity.mthis.placeholderFragment.reloadData(models);
-            
+
         }catch (Exception e){
             e.printStackTrace();
             Log.i("Fix", e.getMessage());

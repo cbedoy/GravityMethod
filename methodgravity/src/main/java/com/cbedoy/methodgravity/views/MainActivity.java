@@ -64,7 +64,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
-        fragment = new PlaceholderFragment();
+        placeholderFragment = new PlaceholderFragment();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, placeholderFragment.newInstance(position+1))
                 .commit();
@@ -191,9 +191,12 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
             labelFieldModelArrayList.add(new LabelFieldModel("Sunrise",  null, responseModel.getSunriseString()+""));
             labelFieldModelArrayList.add(new LabelFieldModel("Sunset",  null, responseModel.getSunsetString()+""));
 
+            Log.i("Fix", responseModel.getNombre());
+            Log.i("Fix", responseModel.getCountry());
+            Log.i("Fix", responseModel.getDescription());
             ItemFieldElement itemFieldElement = new ItemFieldElement(getActivity(), labelFieldModelArrayList);
-            listView.setAdapter(itemFieldElement);
-            itemFieldElement.notifyDataSetChanged();
+            //listView.setAdapter(itemFieldElement);
+            //itemFieldElement.notifyDataSetChanged();
         }
     }
 
